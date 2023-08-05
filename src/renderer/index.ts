@@ -1,8 +1,8 @@
 import './index.css';
 import { toHTML } from './markdown';
-import { Markdown, OpenFile, Rendered } from './elements';
+import { Markdown, OpenFile, Rendered, SaveHtml } from './elements';
 
-let currentFilePath: string | null = null;
+let currentFilePath: string;
 
 const renderMarkdown = async (content: string) => {
   const html = await toHTML(content);
@@ -23,4 +23,11 @@ OpenFile.addEventListener('click', async () => {
 
   Markdown.value = file.content;
   renderMarkdown(file.content);
+});
+
+SaveHtml.addEventListener('click', async () => {
+  const html = Rendered.innerHTML;
+  if (!html) return;
+
+  window.file.saveHTML(html);
 });

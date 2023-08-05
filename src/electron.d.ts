@@ -12,5 +12,6 @@ type MarkdownFile = {
 declare interface Window {
   file: {
     open: () => Promise<MarkdownFile | undefined>;
+    saveHTML: (html: string) => Promise<void>;
   };
 }
