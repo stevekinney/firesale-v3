@@ -23,7 +23,7 @@ const createWindow = () => {
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
     mainWindow.webContents.openDevTools();
-    showOpenDialog();
+    showOpenDialog(mainWindow);
   });
 };
 
@@ -41,12 +41,12 @@ app.on('activate', () => {
   }
 });
 
-const showOpenDialog = async () => {
+const showOpenDialog = async (browserWindow: BrowserWindow) => {
   const result = await dialog.showOpenDialog({
     properties: ['openFile'],
   });
 
   const file = await readFile(result.filePaths[0], 'utf-8');
 
-  console.log(file);
+  browserWindow.webContents.send('file-opened', file);
 };
