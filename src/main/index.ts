@@ -53,6 +53,10 @@ ipcMain.handle('open-file', (event) => {
 const showOpenDialog = async (webContents: WebContents) => {
   const result = await dialog.showOpenDialog({
     properties: ['openFile'],
+    filters: [
+      { name: 'Markdown', extensions: ['md'] },
+      { name: 'Text Files', extensions: ['txt'] },
+    ],
   });
 
   const file = await readFile(result.filePaths[0], 'utf-8');
