@@ -50,6 +50,37 @@ ipcMain.handle('open-file', (event) => {
   return showOpenDialog(event.sender);
 });
 
+ipcMain.handle(
+  'save-markdown',
+  async (event, content: string, path?: string) => {
+    const browserWindow = BrowserWindow.fromWebContents(event.sender);
+
+    if (!browserWindow) return;
+
+    if (!path) {
+      const result = await dialog.showSaveDialog(browserWindow, {
+        title: 'Save Markdown',
+        filters: [{ name: 'Markdown', extensions: ['md'] }],
+        message: 'Save Markdown',
+        buttonLabel: 'Save',
+      });
+
+      if (result.canceled) return;
+      if (!result.filePath) return;
+
+      path = result.filePath;
+    }
+
+    try {
+      await writeFile(path, content, 'utf-8');
+    } catch (error) {
+      console.error(error);
+    }
+
+    return { path };
+  },
+);
+
 ipcMain.handle('save-html', async (event, html: string) => {
   const browserWindow = BrowserWindow.fromWebContents(event.sender);
 

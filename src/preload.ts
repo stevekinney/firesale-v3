@@ -7,4 +7,7 @@ contextBridge.exposeInMainWorld('file', {
   saveHTML: async (html: string) => {
     return ipcRenderer.invoke('save-html', html);
   },
+  saveMarkdown: async (content: string, filePath?: string) => {
+    return ipcRenderer.invoke('save-markdown', content, filePath);
+  },
 });

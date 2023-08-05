@@ -1,6 +1,12 @@
 import './index.css';
 import { toHTML } from './markdown';
-import { Markdown, OpenFile, Rendered, SaveHtml } from './elements';
+import {
+  Markdown,
+  OpenFile,
+  Rendered,
+  SaveHtml,
+  SaveMarkdown,
+} from './elements';
 
 let currentFilePath: string;
 
@@ -12,6 +18,9 @@ const renderMarkdown = async (content: string) => {
 Markdown.addEventListener('input', async () => {
   const markdown = Markdown.value;
   const html = await toHTML(markdown);
+
+  SaveMarkdown.disabled = !markdown;
+
   Rendered.innerHTML = html;
 });
 
@@ -23,6 +32,13 @@ OpenFile.addEventListener('click', async () => {
 
   Markdown.value = file.content;
   renderMarkdown(file.content);
+});
+
+SaveMarkdown.addEventListener('click', async () => {
+  const content = Markdown.value;
+  if (!content) return;
+
+  await window.file.saveMarkdown(content, currentFilePath || '');
 });
 
 SaveHtml.addEventListener('click', async () => {
