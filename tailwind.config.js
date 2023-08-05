@@ -71,7 +71,7 @@ export default colors;
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./index.html', './src/renderer/*.{js,ts,jsx,tsx,css}'],
+  content: ['./index.html', './src/renderer/**/*.{js,ts,jsx,tsx,css}'],
   theme: {
     fontFamily: {
       sans: [

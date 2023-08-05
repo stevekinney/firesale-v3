@@ -4,7 +4,7 @@ import common from './vite.common.config.mjs';
 export default mergeConfig(common, {
   build: {
     lib: {
-      entry: './src/main.ts',
+      entry: './src/main',
       fileName: 'main',
     },
   },
