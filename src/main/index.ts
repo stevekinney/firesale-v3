@@ -1,4 +1,10 @@
-import { app, BrowserWindow, dialog, ipcMain } from 'electron';
+import {
+  app,
+  BrowserWindow,
+  dialog,
+  ipcMain,
+  type WebContents,
+} from 'electron';
 import { readFile } from 'node:fs/promises';
 import { join } from 'path';
 
@@ -23,7 +29,6 @@ const createWindow = () => {
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
     mainWindow.webContents.openDevTools();
-    showOpenDialog(mainWindow);
   });
 };
 
@@ -42,15 +47,15 @@ app.on('activate', () => {
 });
 
 ipcMain.handle('open-file', (event) => {
-  console.log(event);
+  showOpenDialog(event.sender);
 });
 
-const showOpenDialog = async (browserWindow: BrowserWindow) => {
+const showOpenDialog = async (webContents: WebContents) => {
   const result = await dialog.showOpenDialog({
     properties: ['openFile'],
   });
 
   const file = await readFile(result.filePaths[0], 'utf-8');
 
-  browserWindow.webContents.send('file-opened', file);
+  webContents.send('file-opened', file);
 };
