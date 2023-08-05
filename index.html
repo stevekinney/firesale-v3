@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Firesale</title>
+  </head>
+  <body>
+    <section class="controls">
+      <button id="new-file">New File</button>
+      <button id="open-file">Open File</button>
+      <button id="save-file" disabled>Save File</button>
+      <button id="revert" disabled>Revert</button>
+      <button id="save-html">Save HTML</button>
+      <button id="show-file" disabled>Show File</button>
+      <button id="open-in-default-application" disabled>
+        Open in Default Application
+      </button>
+    </section>
+
+    <section class="content">
+      <label for="markdown" class="visually-hidden">Markdown Content</label>
+      <textarea class="raw-markdown" id="markdown"></textarea>
+      <div class="rendered-html" id="html"></div>
+    </section>
+
+    <script type="module" src="/src/renderer/index.ts"></script>
+  </body>
+</html>
