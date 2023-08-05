@@ -1,4 +1,5 @@
 import { app, BrowserWindow, dialog } from 'electron';
+import { readFile } from 'node:fs/promises';
 import { join } from 'path';
 
 const createWindow = () => {
@@ -45,5 +46,7 @@ const showOpenDialog = async () => {
     properties: ['openFile'],
   });
 
-  console.log(result);
+  const file = await readFile(result.filePaths[0], 'utf-8');
+
+  console.log(file);
 };
