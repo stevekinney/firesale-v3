@@ -59,6 +59,9 @@ const showOpenDialog = async (webContents: WebContents) => {
     ],
   });
 
+  if (result.canceled) return;
+  if (result.filePaths.length === 0) return;
+
   const file = await readFile(result.filePaths[0], 'utf-8');
 
   webContents.send('file-opened', file);
