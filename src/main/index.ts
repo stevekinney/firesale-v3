@@ -51,7 +51,11 @@ ipcMain.handle('open-file', (event) => {
 });
 
 const showOpenDialog = async (webContents: WebContents) => {
-  const result = await dialog.showOpenDialog({
+  const browserWindow = BrowserWindow.fromWebContents(webContents);
+
+  if (!browserWindow) return;
+
+  const result = await dialog.showOpenDialog(browserWindow, {
     properties: ['openFile'],
     filters: [
       { name: 'Markdown', extensions: ['md'] },
