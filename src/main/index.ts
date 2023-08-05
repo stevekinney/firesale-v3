@@ -55,12 +55,14 @@ const showOpenDialog = async (webContents: WebContents) => {
 
   if (!browserWindow) return;
 
-  const result = await dialog.showOpenDialog(browserWindow, {
+  const result = await dialog.showOpenDialog({
     properties: ['openFile'],
     filters: [
       { name: 'Markdown', extensions: ['md'] },
       { name: 'Text Files', extensions: ['txt'] },
     ],
+    message: 'Select a Markdown File',
+    buttonLabel: 'Open and Render',
   });
 
   if (result.canceled) return;
