@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog } from 'electron';
+import { app, BrowserWindow, dialog, ipcMain } from 'electron';
 import { readFile } from 'node:fs/promises';
 import { join } from 'path';
 
@@ -39,6 +39,10 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
+});
+
+ipcMain.handle('open-file', (event) => {
+  console.log(event);
 });
 
 const showOpenDialog = async (browserWindow: BrowserWindow) => {
