@@ -5,6 +5,7 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    show: false,
     webPreferences: {
       preload: join(__dirname, 'preload.js'),
     },
@@ -18,7 +19,10 @@ const createWindow = () => {
     );
   }
 
-  mainWindow.webContents.openDevTools();
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
+    mainWindow.webContents.openDevTools();
+  });
 };
 
 app.on('ready', createWindow);
