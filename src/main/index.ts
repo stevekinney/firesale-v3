@@ -41,6 +41,9 @@ const template: MenuItemConstructorOptions[] = [
       },
     ],
   },
+  { label: 'Edit', role: 'editMenu' },
+  { label: 'View', role: 'viewMenu' },
+  { label: 'Window', role: 'windowMenu' },
 ];
 
 if (process.platform === 'darwin') {
