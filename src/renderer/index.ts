@@ -84,3 +84,9 @@ SaveHtml.addEventListener('click', async () => {
 
   window.file.saveHTML(html);
 });
+
+ShowFile.addEventListener('click', async () => {
+  if (!currentFilePath) return;
+
+  await window.file.showFile(currentFilePath);
+});

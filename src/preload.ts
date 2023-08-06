@@ -13,4 +13,7 @@ contextBridge.exposeInMainWorld('file', {
   setEditedStatus: (isEdited: boolean) => {
     ipcRenderer.invoke('set-edited-status', isEdited);
   },
+  showFile: async (path: string) => {
+    return ipcRenderer.invoke('show-file', path);
+  },
 });
