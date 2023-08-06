@@ -44,7 +44,10 @@ const template: MenuItemConstructorOptions[] = [
 if (process.platform === 'darwin') {
   template.unshift({
     label: app.name,
-    submenu: [{ label: `About ${app.name}` }, { label: 'Quit' }],
+    submenu: [
+      { label: `About ${app.name}`, role: 'about' },
+      { label: 'Quit', role: 'quit' },
+    ],
   });
 }
 
