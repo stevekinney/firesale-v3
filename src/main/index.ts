@@ -48,6 +48,15 @@ const template: MenuItemConstructorOptions[] = [
           browserWindow.webContents.send('save-file-from-menu');
         },
       },
+      {
+        label: 'Save HTML',
+        accelerator: 'CmdOrCtrl+Shift+S',
+        click: (_, browserWindow) => {
+          if (!browserWindow) browserWindow = createWindow();
+
+          browserWindow.webContents.send('save-html-from-menu');
+        },
+      },
     ],
   },
   { label: 'Edit', role: 'editMenu' },

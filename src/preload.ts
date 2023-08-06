@@ -32,3 +32,8 @@ ipcRenderer.on('save-file-from-menu', () => {
   const Markdown = document.getElementById('markdown') as HTMLTextAreaElement;
   FileAPI.saveMarkdown(Markdown.value);
 });
+
+ipcRenderer.on('save-html-from-menu', () => {
+  const Rendered = document.getElementById('html') as HTMLDivElement;
+  FileAPI.saveHTML(Rendered.innerHTML);
+});
