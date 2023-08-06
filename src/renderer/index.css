@@ -111,3 +111,11 @@ select {
 .visually-hidden {
   @apply sr-only;
 }
+
+.drag-over {
+  @apply border-2 border-dashed border-primary-500;
+}
+
+.drag-error {
+  @apply border-2 border-dashed border-error-500 bg-error-100;
+}
