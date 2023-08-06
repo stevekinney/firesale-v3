@@ -98,3 +98,55 @@ OpenInDefaultApplication.addEventListener('click', async () => {
 
   await window.file.openInDefaultApplication(currentFilePath);
 });
+
+document.addEventListener('dragstart', (event) => event.preventDefault());
+document.addEventListener('dragover', (event) => event.preventDefault());
+document.addEventListener('dragleave', (event) => event.preventDefault());
+document.addEventListener('drop', (event) => event.preventDefault());
+
+const getDraggedFile = (event: DragEvent) => {
+  return event.dataTransfer?.items?.[0];
+};
+
+const getDroppedFile = (event: DragEvent) => {
+  return event.dataTransfer?.files?.[0];
+};
+
+const fileTypeIsSupported = (file: File | DataTransferItem): boolean => {
+  if (file.type === 'text/markdown') return true;
+  if (file.type === 'text/plain') return true;
+  return false;
+};
+
+Markdown.addEventListener('dragover', (event) => {
+  const file = getDraggedFile(event);
+  if (!file) return;
+
+  if (fileTypeIsSupported(file)) {
+    Markdown.classList.add('drag-over');
+  } else {
+    Markdown.classList.add('drag-error');
+  }
+});
+
+Markdown.addEventListener('dragleave', () => {
+  Markdown.classList.remove('drag-over');
+  Markdown.classList.remove('drag-error');
+});
+
+Markdown.addEventListener('drop', async (event) => {
+  Markdown.classList.remove('drag-over');
+  Markdown.classList.remove('drag-error');
+
+  const file = getDroppedFile(event);
+
+  if (!file) return;
+
+  if (!fileTypeIsSupported(file)) {
+    return;
+  }
+
+  const content = await file.text();
+  Markdown.value = content;
+  renderMarkdown(content);
+});
