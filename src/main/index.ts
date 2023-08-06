@@ -33,6 +33,7 @@ const template: MenuItemConstructorOptions[] = [
     submenu: [
       {
         label: 'Open File',
+        accelerator: 'CmdOrCtrl+O',
         click: (_, browserWindow) => {
           if (!browserWindow) browserWindow = createWindow();
           showOpenDialog(browserWindow);
