@@ -8,8 +8,27 @@ import {
   SaveMarkdown,
 } from './elements';
 
-let currentFilePath: string;
-let lastSavedMarkdown: string;
+let currentFilePath: string | undefined;
+let lastSavedMarkdown: string | undefined;
+
+const updateCurrentFile = (path?: string) => {
+  let title = 'Firesale';
+
+  const isEdited = hasUnsavedChanges(Markdown.value);
+
+  currentFilePath = path;
+  SaveMarkdown.disabled = !isEdited;
+
+  if (path) {
+    title = `${path} — ${title}`;
+  }
+
+  if (isEdited) {
+    title = `${title} (Edited)`;
+  }
+
+  document.title = title;
+};
 
 const renderMarkdown = async (content: string) => {
   const html = await toHTML(content);
@@ -25,7 +44,7 @@ Markdown.addEventListener('input', async () => {
   const markdown = Markdown.value;
   const html = await toHTML(markdown);
 
-  SaveMarkdown.disabled = !hasUnsavedChanges(markdown);
+  updateCurrentFile(currentFilePath);
 
   Rendered.innerHTML = html;
 });
@@ -34,10 +53,10 @@ OpenFile.addEventListener('click', async () => {
   const file = await window.file.open();
   if (!file) return;
 
-  updateCurrentFile(file.path, file.content);
   lastSavedMarkdown = file.content;
-
   Markdown.value = file.content;
+  updateCurrentFile(file.path);
+
   renderMarkdown(file.content);
 });
 
@@ -50,8 +69,8 @@ SaveMarkdown.addEventListener('click', async () => {
     currentFilePath || '',
   );
 
-  updateCurrentFile(path, content);
   lastSavedMarkdown = content;
+  updateCurrentFile(path);
 });
 
 SaveHtml.addEventListener('click', async () => {
