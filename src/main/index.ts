@@ -3,6 +3,7 @@ import {
   BrowserWindow,
   dialog,
   ipcMain,
+  shell,
   type WebContents,
 } from 'electron';
 import { readFile, writeFile } from 'node:fs/promises';
@@ -142,4 +143,8 @@ ipcMain.handle('set-edited-status', (event, isEdited: boolean) => {
   if (!browserWindow) return;
 
   setEditedStatus(browserWindow, isEdited);
+});
+
+ipcMain.handle('show-file', (_, path: string) => {
+  shell.showItemInFolder(path);
 });

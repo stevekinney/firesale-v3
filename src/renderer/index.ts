@@ -6,6 +6,7 @@ import {
   Rendered,
   SaveHtml,
   SaveMarkdown,
+  ShowFile,
 } from './elements';
 
 let currentFilePath: string | undefined;
@@ -17,7 +18,9 @@ const updateCurrentFile = (path?: string) => {
   const isEdited = hasUnsavedChanges(Markdown.value);
 
   currentFilePath = path;
+
   SaveMarkdown.disabled = !isEdited;
+  ShowFile.disabled = !currentFilePath;
 
   window.file.setEditedStatus(isEdited);
 
