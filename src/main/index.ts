@@ -1,4 +1,9 @@
-import { app, BrowserWindow } from 'electron';
+import {
+  app,
+  BrowserWindow,
+  Menu,
+  type MenuItemConstructorOptions,
+} from 'electron';
 
 import { createWindow } from './create-window';
 import { setupIpcHandlers } from './file-management';
@@ -7,6 +12,7 @@ setupIpcHandlers();
 
 app.on('ready', () => {
   createWindow();
+  Menu.setApplicationMenu(applicationMenu);
 });
 
 app.on('window-all-closed', () => {
@@ -20,3 +26,19 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+const template: MenuItemConstructorOptions[] = [
+  {
+    label: 'File',
+    submenu: [
+      {
+        label: 'Open File',
+        click: () => {
+          console.log('Open File');
+        },
+      },
+    ],
+  },
+];
+
+const applicationMenu = Menu.buildFromTemplate(template);
