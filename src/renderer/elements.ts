@@ -1,6 +1,7 @@
 export const Markdown = document.getElementById(
   'markdown',
 ) as HTMLTextAreaElement;
+
 export const Rendered = document.getElementById('html') as HTMLDivElement;
 
 export const NewFileButton = document.getElementById(
