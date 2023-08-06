@@ -3,6 +3,7 @@ import { toHTML } from './markdown';
 import {
   Markdown,
   OpenFile,
+  OpenInDefaultApplication,
   Rendered,
   SaveHtml,
   SaveMarkdown,
@@ -21,6 +22,7 @@ const updateCurrentFile = (path?: string) => {
 
   SaveMarkdown.disabled = !isEdited;
   ShowFile.disabled = !currentFilePath;
+  OpenInDefaultApplication.disabled = !currentFilePath;
 
   window.file.setEditedStatus(isEdited);
 
@@ -89,4 +91,10 @@ ShowFile.addEventListener('click', async () => {
   if (!currentFilePath) return;
 
   await window.file.showFile(currentFilePath);
+});
+
+OpenInDefaultApplication.addEventListener('click', async () => {
+  if (!currentFilePath) return;
+
+  await window.file.openInDefaultApplication(currentFilePath);
 });

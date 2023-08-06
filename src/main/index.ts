@@ -148,3 +148,7 @@ ipcMain.handle('set-edited-status', (event, isEdited: boolean) => {
 ipcMain.handle('show-file', (_, path: string) => {
   shell.showItemInFolder(path);
 });
+
+ipcMain.handle('open-in-default-application', (_, path: string) => {
+  shell.openPath(path);
+});

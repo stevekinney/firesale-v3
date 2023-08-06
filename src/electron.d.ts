@@ -19,5 +19,6 @@ declare interface Window {
     saveHTML: (html: string) => Promise<void>;
     setEditedStatus: (isEdited: boolean) => void;
     showFile: (path: string) => Promise<void>;
+    openInDefaultApplication: (path: string) => Promise<void>;
   };
 }
