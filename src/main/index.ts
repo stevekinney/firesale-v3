@@ -6,7 +6,7 @@ import {
 } from 'electron';
 
 import { createWindow } from './create-window';
-import { setupIpcHandlers } from './file-management';
+import { setupIpcHandlers, showOpenDialog } from './file-management';
 
 setupIpcHandlers();
 
@@ -33,8 +33,9 @@ const template: MenuItemConstructorOptions[] = [
     submenu: [
       {
         label: 'Open File',
-        click: () => {
-          console.log('Open File');
+        click: (_, browserWindow) => {
+          if (!browserWindow) browserWindow = createWindow();
+          showOpenDialog(browserWindow);
         },
       },
     ],
