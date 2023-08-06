@@ -17,5 +17,6 @@ declare interface Window {
       filePath?: string,
     ) => Promise<{ path: string }>;
     saveHTML: (html: string) => Promise<void>;
+    setEditedStatus: (isEdited: boolean) => void;
   };
 }

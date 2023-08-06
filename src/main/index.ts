@@ -129,3 +129,15 @@ const showOpenDialog = async (webContents: WebContents) => {
     content,
   };
 };
+
+const setEditedStatus = (browserWindow: BrowserWindow, edited: boolean) => {
+  browserWindow.setDocumentEdited(edited);
+};
+
+ipcMain.handle('set-edited-status', (event, isEdited: boolean) => {
+  const browserWindow = BrowserWindow.fromWebContents(event.sender);
+
+  if (!browserWindow) return;
+
+  setEditedStatus(browserWindow, isEdited);
+});

@@ -19,6 +19,8 @@ const updateCurrentFile = (path?: string) => {
   currentFilePath = path;
   SaveMarkdown.disabled = !isEdited;
 
+  window.file.setEditedStatus(isEdited);
+
   if (path) {
     title = `${path} — ${title}`;
   }

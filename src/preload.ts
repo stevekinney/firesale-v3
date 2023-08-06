@@ -10,4 +10,7 @@ contextBridge.exposeInMainWorld('file', {
   saveMarkdown: async (content: string, filePath?: string) => {
     return ipcRenderer.invoke('save-markdown', content, filePath);
   },
+  setEditedStatus: (isEdited: boolean) => {
+    ipcRenderer.invoke('set-edited-status', isEdited);
+  },
 });
