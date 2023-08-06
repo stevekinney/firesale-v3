@@ -22,12 +22,6 @@
     "target": "ESNext",
     "tsBuildInfoFile": "./.cache/tsconfig.tsbuildinfo",
     "useDefineForClassFields": true,
-    "baseUrl": ".",
-    "paths": {
-      "@*": ["src/*"],
-      "@lib/*": ["src/lib/*"],
-      "@components/*": ["src/renderer/components/*"],
-    },
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.json"]
 }

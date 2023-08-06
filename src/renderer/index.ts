@@ -1,5 +1,5 @@
-import '@styles/index.css';
-import { toHTML } from '@lib/markdown';
+import './index.css';
+import { toHTML } from './markdown';
 import { Markdown, Rendered } from './elements';
 
 Markdown.addEventListener('input', async () => {
