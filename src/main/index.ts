@@ -78,6 +78,7 @@ ipcMain.handle(
     }
 
     browserWindow.setRepresentedFilename(path);
+    app.addRecentDocument(path);
 
     return { path };
   },
@@ -123,6 +124,7 @@ const showOpenDialog = async (webContents: WebContents) => {
   const content = await readFile(path, 'utf-8');
 
   browserWindow.setRepresentedFilename(path);
+  app.addRecentDocument(path);
 
   return {
     path,
