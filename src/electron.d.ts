@@ -20,5 +20,6 @@ declare interface Window {
     setEditedStatus: (isEdited: boolean) => void;
     showFile: (path: string) => Promise<void>;
     openInDefaultApplication: (path: string) => Promise<void>;
+    setCurrentFilePath: (path: string) => void;
   };
 }

@@ -78,8 +78,7 @@ ipcMain.handle(
       console.error(error);
     }
 
-    browserWindow.setRepresentedFilename(path);
-    app.addRecentDocument(path);
+    setCurrentFilePath(browserWindow, path);
 
     return { path };
   },
@@ -124,14 +123,27 @@ const showOpenDialog = async (webContents: WebContents) => {
   const [path] = result.filePaths;
   const content = await readFile(path, 'utf-8');
 
-  browserWindow.setRepresentedFilename(path);
-  app.addRecentDocument(path);
+  setCurrentFilePath(browserWindow, path);
 
   return {
     path,
     content,
   };
 };
+
+const setCurrentFilePath = (browserWindow: BrowserWindow, path: string) => {
+  browserWindow.setRepresentedFilename(path);
+  app.addRecentDocument(path);
+  setEditedStatus(browserWindow, false);
+};
+
+ipcMain.on('set-current-file-path', (event, path: string) => {
+  const browserWindow = BrowserWindow.fromWebContents(event.sender);
+
+  if (!browserWindow) return;
+
+  setCurrentFilePath(browserWindow, path);
+});
 
 const setEditedStatus = (browserWindow: BrowserWindow, edited: boolean) => {
   browserWindow.setDocumentEdited(edited);

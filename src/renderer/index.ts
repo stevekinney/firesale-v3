@@ -25,6 +25,7 @@ const updateCurrentFile = (path?: string) => {
   OpenInDefaultApplication.disabled = !currentFilePath;
 
   window.file.setEditedStatus(isEdited);
+  if (currentFilePath) window.file.setCurrentFilePath(currentFilePath);
 
   if (path) {
     title = `${path} — ${title}`;
@@ -147,6 +148,10 @@ Markdown.addEventListener('drop', async (event) => {
   }
 
   const content = await file.text();
+
   Markdown.value = content;
+  lastSavedMarkdown = content;
+
   renderMarkdown(content);
+  updateCurrentFile(file.path);
 });

@@ -19,4 +19,7 @@ contextBridge.exposeInMainWorld('file', {
   openInDefaultApplication: async (path: string) => {
     return ipcRenderer.invoke('open-in-default-application', path);
   },
+  setCurrentFilePath: (path: string) => {
+    ipcRenderer.send('set-current-file-path', path);
+  },
 });
