@@ -77,6 +77,8 @@ ipcMain.handle(
       console.error(error);
     }
 
+    browserWindow.setRepresentedFilename(path);
+
     return { path };
   },
 );
@@ -119,6 +121,8 @@ const showOpenDialog = async (webContents: WebContents) => {
 
   const [path] = result.filePaths;
   const content = await readFile(path, 'utf-8');
+
+  browserWindow.setRepresentedFilename(path);
 
   return {
     path,
