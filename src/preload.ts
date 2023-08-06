@@ -27,3 +27,8 @@ const FileAPI = {
 contextBridge.exposeInMainWorld('file', FileAPI);
 
 export type FileAPI = typeof FileAPI;
+
+ipcRenderer.on('save-file-from-menu', () => {
+  const Markdown = document.getElementById('markdown') as HTMLTextAreaElement;
+  FileAPI.saveMarkdown(Markdown.value);
+});
