@@ -9,17 +9,8 @@ type MarkdownFile = {
   content: string;
 };
 
+import { FileAPI } from '../preload';
+
 declare interface Window {
-  file: {
-    open: () => Promise<MarkdownFile | undefined>;
-    saveMarkdown: (
-      content: string,
-      filePath?: string,
-    ) => Promise<{ path: string }>;
-    saveHTML: (html: string) => Promise<void>;
-    setEditedStatus: (isEdited: boolean) => void;
-    showFile: (path: string) => Promise<void>;
-    openInDefaultApplication: (path: string) => Promise<void>;
-    setCurrentFilePath: (path: string) => void;
-  };
+  file: FileAPI;
 }

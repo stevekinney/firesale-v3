@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
-contextBridge.exposeInMainWorld('file', {
+const FileAPI = {
   open: async () => {
     return ipcRenderer.invoke('open-file');
   },
@@ -22,4 +22,8 @@ contextBridge.exposeInMainWorld('file', {
   setCurrentFilePath: (path: string) => {
     ipcRenderer.send('set-current-file-path', path);
   },
-});
+} as const;
+
+contextBridge.exposeInMainWorld('file', FileAPI);
+
+export type FileAPI = typeof FileAPI;
