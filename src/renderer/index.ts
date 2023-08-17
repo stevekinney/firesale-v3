@@ -1,4 +1,3 @@
-import './index.css';
 import { toHTML } from './markdown';
 import { Markdown, Rendered } from './elements';
 
