@@ -1,31 +1,35 @@
-export const Markdown = document.getElementById(
-  'markdown',
+export const MarkdownView = document.getElementById(
+  'markdown-view',
 ) as HTMLTextAreaElement;
 
-export const Rendered = document.getElementById('html') as HTMLDivElement;
+export const RenderedView = document.getElementById(
+  'rendered-view',
+) as HTMLDivElement;
 
 export const NewFileButton = document.getElementById(
   'new-file',
 ) as HTMLButtonElement;
 
-export const OpenFile = document.getElementById(
+export const OpenFileButton = document.getElementById(
   'open-file',
 ) as HTMLButtonElement;
 
-export const SaveMarkdown = document.getElementById(
+export const SaveMarkdownButton = document.getElementById(
   'save-markdown',
 ) as HTMLButtonElement;
 
-export const Revert = document.getElementById('revert') as HTMLButtonElement;
-
-export const SaveHtml = document.getElementById(
-  'save-html',
+export const RevertButton = document.getElementById(
+  'revert',
 ) as HTMLButtonElement;
 
-export const ShowFile = document.getElementById(
+export const ExportHtmlButton = document.getElementById(
+  'export-html',
+) as HTMLButtonElement;
+
+export const ShowFileButton = document.getElementById(
   'show-file',
 ) as HTMLButtonElement;
 
-export const OpenInDefaultApplication = document.getElementById(
+export const OpenInDefaultApplicationButton = document.getElementById(
   'open-in-default-application',
 ) as HTMLButtonElement;

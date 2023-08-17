@@ -14,7 +14,7 @@ html {
 
 html,
 body {
-  @apply w-screen h-screen overflow-hidden;
+  @apply w-screen h-screen;
 }
 
 body {
@@ -26,10 +26,6 @@ input,
 div,
 button {
   @apply m-0 outline-none text-sm;
-}
-
-.controls {
-  @apply flex bg-primary-100 text-white p-2 gap-1;
 }
 
 input {
@@ -92,20 +88,20 @@ select {
   @apply whitespace-nowrap border-l-0;
 }
 
-.container {
-  @apply flex flex-col h-full;
+.application {
+  @apply grid h-full w-full gap-0 grid-rows-[3rem_auto] grid-cols-[1fr_1fr];
 }
 
-.content {
-  @apply h-full flex;
+.controls {
+  @apply flex bg-primary-100 text-white p-2 gap-1 col-span-2;
 }
 
 .raw-markdown {
-  @apply h-full w-1/2 p-4 overflow-scroll font-mono bg-primary-50 text-primary-900;
+  @apply h-full w-full p-4 bg-primary-50 text-primary-900;
 }
 
 .rendered-html {
-  @apply prose-sm h-full w-1/2 px-4 py-2 overflow-scroll;
+  @apply prose-sm h-full w-full px-4 py-2 overflow-scroll;
 }
 
 .visually-hidden {

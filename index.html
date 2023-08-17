@@ -11,23 +11,24 @@
     <title>Firesale</title>
   </head>
   <body>
-    <section class="controls">
-      <button id="new-file">New File</button>
-      <button id="open-file">Open File</button>
-      <button id="save-markdown" disabled>Save File</button>
-      <button id="revert" disabled>Revert</button>
-      <button id="save-html">Save HTML</button>
-      <button id="show-file" disabled>Show File</button>
-      <button id="open-in-default-application" disabled>
-        Open in Default Application
-      </button>
-    </section>
-
-    <section class="content">
-      <label for="markdown" class="visually-hidden">Markdown Content</label>
-      <textarea class="raw-markdown" id="markdown"></textarea>
-      <div class="rendered-html" id="html"></div>
-    </section>
+    <main class="application">
+      <section class="controls">
+        <button id="new-file">New File</button>
+        <button id="open-file">Open File</button>
+        <button id="save-markdown" disabled>Save File</button>
+        <button id="revert" disabled>Revert</button>
+        <button id="export-html">Save HTML</button>
+        <button id="show-file" disabled>Show File</button>
+        <button id="open-in-default-application" disabled>
+          Open in Default Application
+        </button>
+      </section>
+      <label for="markdown-view" class="visually-hidden"
+        >Markdown Content</label
+      >
+      <textarea class="raw-markdown" id="markdown-view"></textarea>
+      <div class="rendered-html" id="rendered-view"></div>
+    </main>
 
     <script type="module" src="/src/renderer/index.ts"></script>
   </body>

@@ -1,8 +1,8 @@
 import { toHTML } from './markdown';
-import { Markdown, Rendered } from './elements';
+import { MarkdownView, RenderedView } from './elements';
 
-Markdown.addEventListener('input', async () => {
-  const markdown = Markdown.value;
+MarkdownView.addEventListener('input', async () => {
+  const markdown = MarkdownView.value;
   const html = await toHTML(markdown);
-  Rendered.innerHTML = html;
+  RenderedView.innerHTML = html;
 });
