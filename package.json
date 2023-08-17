@@ -1,8 +1,8 @@
 {
   "name": "firesale-v3",
-  "productName": "firesale-v3",
+  "productName": "Firesale",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "A simple Markdown editor built with Electron and Vite.",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
