@@ -12,5 +12,6 @@ declare interface Window {
     saveFile: (content: string) => void;
     checkForUnsavedChanges: (content: string) => Promise<boolean>;
     showInFolder: () => void;
+    openInDefaultApplication: () => void;
   };
 }
