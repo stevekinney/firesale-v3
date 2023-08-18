@@ -211,8 +211,13 @@ const template: MenuItemConstructorOptions[] = [
           if (!browserWindow) browserWindow = createWindow();
           showOpenDialog(browserWindow);
         },
+        accelerator: 'CmdOrCtrl+O',
       },
     ],
+  },
+  {
+    label: 'Edit',
+    role: 'editMenu',
   },
 ];
 
