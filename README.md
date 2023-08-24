@@ -1,3 +1,19 @@
+[![Frontend Masters](https://static.frontendmasters.com/assets/brand/logos/full.png)][fem]
+
 # Firesale
 
-An example application for the Electron v3 course for Frontend Masters.
+This is a companion repo for the [Electron-v3][course] course on [Frontend Masters][fem].
+
+## Setup
+Make sure you have [Node.js](https://nodejs.org/) v16.17.0 and [Git](https://git-scm.com/) v2.41.0 or newer.
+
+The following command will also globally install the [Yarn](https://yarnpkg.com/) package manager, which is required for this repo.
+
+```
+npm i -g yarn
+npm i
+npm start
+```
+
+[fem]: https://frontendmasters.com
+[course]: https://frontendmasters.com/courses/electron-v3/
