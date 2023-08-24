@@ -5,7 +5,7 @@
 This is a companion repo for the [Electron-v3][course] course on [Frontend Masters][fem].
 
 ## Setup
-Make sure you have [Node.js](https://nodejs.org/) v16.17.0 and [Git](https://git-scm.com/) v2.41.0 or newer.
+Make sure you have [Node.js](https://nodejs.org/) v16 or newer and [Git](https://git-scm.com/) installed.
 
 The following command will also globally install the [Yarn](https://yarnpkg.com/) package manager, which is required for this repo.
 
