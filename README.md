@@ -5,12 +5,12 @@
 This is a companion repo for the [Electron-v3][course] course on [Frontend Masters][fem].
 
 ## Setup
-Make sure you have [Node.js](https://nodejs.org/) v16 or newer and [Git](https://git-scm.com/) installed.
+Make sure you have [Node.js](https://nodejs.org/) v16 or newer, [Git](https://git-scm.com/), and the [Yarn](https://yarnpkg.com/) package manager installed.
 
-The following command will also globally install the [Yarn](https://yarnpkg.com/) package manager, which is required for this repo.
+Run `npm i -g yarn` to globally install Yarn
 
+The following commands will install the repo dependencies and start the Firesale application.
 ```
-npm i -g yarn
 npm i
 npm start
 ```
